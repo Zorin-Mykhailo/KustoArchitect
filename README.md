@@ -1,1 +1,17 @@
-
+```mermaid
+---
+title: Node
+---
+flowchart LR
+    KUSTO-GLOBAL-DATA-SERVER
+    
+    1C
+    ELMA
+    CROPIO
+    APS-TENDER
+    
+    KUSTO-GLOBAL-DATA-SERVER <--> 1C
+    KUSTO-GLOBAL-DATA-SERVER <--> ELMA
+    KUSTO-GLOBAL-DATA-SERVER <--> CROPIO
+    KUSTO-GLOBAL-DATA-SERVER <--> APS-TENDER
+```

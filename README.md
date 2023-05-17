@@ -2,16 +2,24 @@
 ---
 title: Node
 ---
-flowchart LR
-    KUSTO-GLOBAL-DATA-SERVER
+flowchart TB
+    subgraph OneS ["1С"]
+    OneS_DB[(DB)]
+    end
     
-    1C
-    ELMA
-    CROPIO
-    APS-TENDER
+    subgraph GDS ["GLOBAL DATA SERVER"]
+    KGDS_DB[(DB)]
+    end
     
-    KUSTO-GLOBAL-DATA-SERVER <--> 1C
-    KUSTO-GLOBAL-DATA-SERVER <--> ELMA
-    KUSTO-GLOBAL-DATA-SERVER <--> CROPIO
-    KUSTO-GLOBAL-DATA-SERVER <--> APS-TENDER
+    subgraph Elma ["ELMA"]
+    Elma_DB[(DB)]
+    end
+    
+    subgraph Cropio ["Cropio"]
+    Cropio_DB[(DB)]
+    end
+    
+    OneS <==> GDS
+    GDS <--> Elma
+    GDS <--> Cropio
 ```

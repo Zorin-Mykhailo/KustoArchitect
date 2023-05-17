@@ -2,12 +2,12 @@
 ---
 title: Node
 ---
-flowchart TB
+flowchart TD
     subgraph OneS ["1С"]
     OneS_DB[(DB)]
     end
     
-    subgraph GDS ["GLOBAL DATA SERVER"]
+    subgraph GDS["GLOBAL DATA SERVER"]
     KGDS_DB[(DB)]
     end
     
@@ -19,7 +19,14 @@ flowchart TB
     Cropio_DB[(DB)]
     end
     
+    subgraph Aps ["APS Tender"]
+    Aps_DB[(DB)]
+    end
+    
     OneS <==> GDS
-    GDS <--> Elma
-    GDS <--> Cropio
+    GDS <==> Elma
+    GDS <==> Cropio
+    GDS <==> Aps
+    Elma <-.-> Aps
+    Elma <-.-> Cropio
 ```

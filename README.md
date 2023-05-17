@@ -3,34 +3,46 @@
 title: Node
 ---
 flowchart TD
-    subgraph OneS ["1С"]
-    OneS_DB[(DB)]
+    subgraph PS ["Primary system"]
+        subgraph OneS ["1С"]
+        OneS_DB[(DB)]
+        end
+
+        subgraph GDS["Сервер глобальних даних"]
+        KGDS_DB[(DB)]
+        end
     end
     
-    style OneS stroke:#f66,stroke-width:2px,color:#fff
-    
-    subgraph GDS["GLOBAL DATA SERVER"]
-    KGDS_DB[(DB)]
-    end
-    
-    style GDS stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
     
     subgraph Elma ["ELMA"]
     Elma_DB[(DB)]
     end
-    
+
     subgraph Cropio ["Cropio"]
     Cropio_DB[(DB)]
     end
-    
+
     subgraph Aps ["APS Tender"]
     Aps_DB[(DB)]
     end
     
-    OneS <==> GDS
-    GDS -- "`Bold **edge label**`" --> Elma
-    GDS <==> Cropio
-    GDS <==> Aps
-    Elma <-.-> Aps
-    Elma <-.-> Cropio
+    
+    OneS <==>|DS01| GDS
+    GDS <==>|DS02| Elma
+    GDS <==>|DS03| Cropio
+    GDS <==>|DS04| Aps
+    Elma <-.->|DS05| Aps
+    Elma <-.->|DS06| OneS
+    Elma <-.->|DS07| Cropio
+    
+    style GDS stroke:#f66,stroke-width:2px,color:#fff
+    style OneS stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
 ```
+
+**Перелік глобальних даних:**
+- [ ] Робітник
+- [ ] Посада
+- [ ] Підприємство
+- [ ] Стаття б'юджету
+- [ ] Группа номенклатури
+- [ ] Номенклатура

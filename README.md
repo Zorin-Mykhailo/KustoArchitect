@@ -7,9 +7,13 @@ flowchart TD
     OneS_DB[(DB)]
     end
     
+    style OneS stroke:#f66,stroke-width:2px,color:#fff
+    
     subgraph GDS["GLOBAL DATA SERVER"]
     KGDS_DB[(DB)]
     end
+    
+    style GDS stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
     
     subgraph Elma ["ELMA"]
     Elma_DB[(DB)]
@@ -24,7 +28,7 @@ flowchart TD
     end
     
     OneS <==> GDS
-    GDS <==> Elma
+    GDS -- "`Bold **edge label**`" --> Elma
     GDS <==> Cropio
     GDS <==> Aps
     Elma <-.-> Aps
